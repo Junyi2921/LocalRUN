@@ -1,8 +1,52 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+.roundBtn {
+      display: flex;
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      border-radius: 100%;
+      box-shadow: 0 0 10px #bfbfbf;
+      border: 1px solid #cdcdcd;
+      justify-content: center;
+      align-items: center;
 }
-.log-item {
-  margin: 10rpx;
+
+.roundBtn .img {
+      display: flex;
+      width: 60%;
+      height: 60%;
+}
+
+.getLocation {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+}
+
+.myInfo {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+}
+
+.editBox{
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      height: 340rpx;
+      background: #ffffff;
+      -webkit-box-shadow:0 0 10px #bfbfbf;
+      box-shadow: 0 0 10px #bfbfbf;
+      border: 1px solid #cdcdcd;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+}
+.editBoxItem{
+      display: flex;
+      flex: 1;
+      padding: 10px
+}
+.editBoxItem:first-child{
+      border-bottom: 1px solid #dbdbdb;
 }

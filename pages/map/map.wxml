@@ -1,4 +1,16 @@
 <!--logs.wxml-->
 <view class="container">
-      <map id="map" scale="{{scale}}"  show-location="{{showLocation}}" style="width:100% ;height: 100%;"></map>
+      <map id="map" scale="{{scale}}" show-location="{{showLocation}}" style="width:100% ;height: 100%;">
+            <cover-view class="getLocation roundBtn" bindtap='moveToLocation'>
+                  <cover-image class="img" src="../../resources/imgs/location.png" />
+            </cover-view>
+            <cover-view class="myInfo roundBtn" bindtap='moveToLocation'>
+                  <cover-image class="img" src="../../resources/imgs/user.png" />
+            </cover-view>
+            <cover-view class='editBox'>
+                  <!-- <button>123</button> -->
+                  <input class='editBoxItem' type='text' placeholder="请输入文本内容"></input>
+                  <input class='editBoxItem' type='text' placeholder="请输入文本内容"></input>
+            </cover-view>
+      </map>
 </view>
