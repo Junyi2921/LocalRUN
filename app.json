@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/map/map"
+  ],
+  "window": {
+    "backgroundColor": "#38373D",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#38373D",
+    
+    "navigationBarTitleText": "Parrish",
+    "navigationBarTextStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}
