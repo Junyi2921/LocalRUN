@@ -56,7 +56,8 @@ Page({
       },
       moveToLocation() {
             this.mapCtx.moveToLocation();
-      }, regionchange(e) {
+      }, 
+      regionchange(e) {
             const _this = this;
             const location = _this.data.controls;
             if(e.type == "begin"){
@@ -90,4 +91,9 @@ Page({
                   controls: location
             });
       },
+      chooseStartAddress(){
+            wx.navigateTo({
+                  url: '../../pages/chooseAddress/chooseAddress'
+            })
+      }
 })

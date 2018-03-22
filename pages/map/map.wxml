@@ -8,11 +8,11 @@
                   <cover-image class="img" src="../../resources/imgs/user.png" />
             </cover-view>
             <cover-view class='editBox'>
-                  <cover-view class='editBoxItem'>
+                  <cover-view class='editBoxItem' bindtap='chooseStartAddress'>
                         <cover-image class='editBoxItemLeftIcon' src='../../resources/imgs/adStart.png'></cover-image>
                         <cover-view class='editBoxItemAddress'>
-                              <cover-view class='itemFormatted'>
-                                     {{startAD.formatted}}
+                              <cover-view class='itemFormatted' wx:if="{{startAD.formatted}}">
+                                    {{startAD.formatted}}
                               </cover-view>
                               <cover-view class='itemAddress'>
                                     {{startAD.address}}
@@ -23,8 +23,8 @@
                   <cover-view class='editBoxItem'>
                         <cover-image class='editBoxItemLeftIcon' src='../../resources/imgs/adEnd.png'></cover-image>
                         <cover-view class='editBoxItemAddress'>
-                              <cover-view class='itemFormatted'>
-                                     {{endAD.formatted}}
+                              <cover-view class='itemFormatted' wx:if="{{endAD.formatted}}">
+                                    {{endAD.formatted}}
                               </cover-view>
                               <cover-view class='itemAddress'>
                                     {{endAD.address}}

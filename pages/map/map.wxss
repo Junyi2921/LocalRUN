@@ -68,13 +68,13 @@
       justify-content: flex-start;
       align-items: center;
       white-space:normal;
-      
 }
 .itemFormatted{
       display: flex;
       font-size: 34rpx;
       font-weight: bold;
       color: #30343A;
+      margin-bottom: 15px;
 }
 .itemAddress{
       font-size: 28rpx;
@@ -84,3 +84,4 @@
       height: 1px;
       background: #dbdbdb;
 }
+

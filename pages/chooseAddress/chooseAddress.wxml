@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="container">
+      <view class='search'>
+            <view class='searchSpace'></view>
+            <input class='searchInput' bindinput="bindKeyInput" bindconfirm="searchAddressList" type='text' confirm-type="search" placeholder='请输入要搜索的地址'></input>
+            <view class='searchBtn' bindtap='searchAddressList'>搜索</view>
+            <view class='searchSpace'></view>
+      </view>
+      <view class='tab'>
+            <view class='tabItem' bindtap='getLocation'>我的位置</view>
+            <view class='tabItem' bindtap='getHistoryList'>历史记录</view>
+            <view class='tabItem' bindtap='chooseNativeMap'>地图选点</view>
+      </view>
+      <scroll-view class="searchList" scroll-y='true' enable-back-to-top='true' scroll-top='{{scrollTop}}'>
+            <view class='searchItem' wx:for="{{searchList}}" wx:key="{{index}}" id="{{index}}" bindtap='chooseItem'>
+                  <view class='searchItemTitle'>
+                        {{item.title}}
+                  </view>
+                  <view class='searchItemCity'>
+                        {{item.city}}
+                  </view>
+                  <view class='searchItemAddress'>
+                        {{item.address}}
+                  </view>
+            </view>
+            
+      </scroll-view>
+</view>
