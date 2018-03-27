@@ -4,6 +4,7 @@ const TXMapWX = require('../../libs/qqmap-wx-jssdk.js');
 var TXMapSDK;
 Page({
       data: {
+            centerNeedle:true,
             mapCtx: "",
             showLocation: true,
             scale: 16,
@@ -18,6 +19,8 @@ Page({
                   },
                   clickable: true
             }],
+            markers:[],
+            includePoint:[],
             startAD:{
                   lat:"",
                   lng:"",
@@ -33,7 +36,8 @@ Page({
       },
       onLoad: function (options) {
             console.log("load");
-            // 页面初始化 options为页面跳转所1带来的参数
+            
+            // 页面初始化 options为页面跳转所带来的参数
             TXMapSDK = new TXMapWX({
                   key: 'UHOBZ-3K3RD-B6G4J-HK7G6-HDXJ6-ENBBH'
             });
@@ -44,9 +48,31 @@ Page({
       },
       onReady: function () {
             console.log("ready");
+            const _this = this;
             // 页面渲染完成
-            this.mapCtx = wx.createMapContext("map");
-            this.mapCtx.moveToLocation();
+            _this.mapCtx = wx.createMapContext("map");
+
+            //-----------------------------------------
+           
+            wx.getStorage({
+                  key: 'startAD',
+                  success: function (res) {
+                        if(!res){
+
+                              _this.mapCtx.moveToLocation();
+                        }else{
+                              console.log(res.data)
+                              const lat = res.data.lat;
+                              const lng = res.data.lng;
+                              _this.setData({
+                                    startAD: res.data,
+                                    includePoint: [{ latitude: lat, longitude:lng}]
+                              });
+                              _this.createStartMarks(lat, lng);
+                              _this.includePointsInMap(_this.data.includePoint)
+                        }
+                  }
+            })
       },
       onHide: function () {
             // 页面隐藏
@@ -82,8 +108,14 @@ Page({
                                                        formatted: res.result.formatted_addresses.recommend
                                                 }
                                            })
-                                     }
+                                    },
+                                    fail(res) {
+                                          console.log(res);
+                                    }
                               })
+                        },
+                        fail(res) {
+                              console.log(res);
                         }
                   });
             }
@@ -91,9 +123,41 @@ Page({
                   controls: location
             });
       },
+      includePointsInMap(arr){
+            console.log(arr);
+            this.mapCtx.includePoints({
+                  points: arr
+            })
+      },
+      //创建开始和结束位置的markers
+      createStartMarks(lat, lng){
+            const _this = this;
+            const tempMarkers = [];
+            const index = tempMarkers.length;
+            const marker = {
+                  id: index + 1,
+                  latitude: lat,
+                  longitude: lng,
+                  width: 40,
+                  height: 40,
+                  anchor: {
+                        x: .1
+                  },
+                  iconPath: '/resources/imgs/start.png'
+            };
+            tempMarkers.push(marker);
+            _this.setData({
+                  markers: tempMarkers
+            })
+      },
       chooseStartAddress(){
             wx.navigateTo({
-                  url: '../../pages/chooseAddress/chooseAddress'
+                  url: '../../pages/chooseAddress/chooseAddress?type=1'
+            })
+      },
+      chooseEndAddress() {
+            wx.navigateTo({
+                  url: '../../pages/chooseAddress/chooseAddress?type=2'
             })
       }
 })

@@ -1,6 +1,6 @@
 <!--logs.wxml-->
 <view class="container">
-      <map id="map" controls="{{controls}}" scale="{{scale}}" show-location="{{showLocation}}" bindregionchange="regionchange" style="width:100% ;height: 100%;">
+      <map id="map" markers="{{markers}}"  controls="{{controls}}" scale="{{scale}}" show-location="{{showLocation}}" bindregionchange="regionchange" style="width:100% ;height: 100%;">
             <cover-view class="getLocation roundBtn" bindtap='moveToLocation'>
                   <cover-image class="img" src="../../resources/imgs/location.png" />
             </cover-view>

@@ -1,7 +1,7 @@
 /**chooseAddress.wxss**/
 
 .container {
-      background: #edece8;
+      background: #F0F0F0;
 }
 
 .search,.tab {
@@ -47,9 +47,16 @@
       align-items: center;
       border-right: 1px solid #edece8;
       font-size: 30rpx;
+      color: #323132;
 }
 .tabItem:last-child{
       border: none;
+}
+
+.tabItemImg{
+      width: 38rpx;
+      height: 36rpx;
+      margin-right: 15rpx;
 }
 
 .searchList{
@@ -59,24 +66,42 @@
       background: #ffffff;
 }
 
+.emptyListView{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 36rpx;
+      font-size: 30rpx;
+      color: #999999;
+}
+
 .searchItem{
       display: flex;
       flex-direction: column;
       border-bottom: 1px solid #edece8;
       padding: 20rpx;
 }
-.searchItemTitle,.searchItemCategory{
-      margin-bottom: 10rpx;
+.searchItemTitle,.searchItemCity{
+      margin-bottom: 15rpx;
 }
 .searchItemTitle{
       font-size: 34rpx;
-      color: #3399ff;
+      color: #458AFC;
 }
 .searchItemCity{
       font-size: 22rpx;
-      color: #dddcd4;
+      color: #FA8367;
 }
 .searchItemAddress{
       font-size: 28rpx;
-      color: #999999;
+      color: #767676;
+}
+
+.emptyIcon{
+      display: flex;
+      width: 100rpx;
+      height: 100rpx;
+      margin-top: 200rpx;
+      margin-bottom: 20rpx;
 }

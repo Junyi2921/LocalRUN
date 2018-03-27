@@ -4,11 +4,15 @@ const TXMapWX = require('../../libs/qqmap-wx-jssdk.js');
 var TXMapSDK;
 Page({
       data: {
+            type:"",
             searchContent: "",
             searchList: "",
             scrollTop: 0
       },
       onLoad: function (options) {
+            this.setData({
+                  type: options.type
+            });
             console.log("load");
             // 页面初始化 options为页面跳转所1带来的参数
             TXMapSDK = new TXMapWX({
@@ -89,11 +93,26 @@ Page({
       chooseItem(e){
             const _this = this;
             const index = e.currentTarget.id;
-            const lb = _this.data.searchList[index].location;
-            wx.showToast({
-                  title: JSON.stringify(lb),
-                  icon: 'success',
-                  duration: 2000
+            const lb = _this.data.searchList[index];
+            wx.setStorage({
+                  key: "startAD",
+                  data: {
+                        lat: lb.location.lat,
+                        lng: lb.location.lng,
+                        address: lb.address,
+                        formatted: lb.title
+                  },
+                  success(){
+                        wx.navigateBack({
+                              delta: 1
+                        })    
+                  }
             })
+            
+            // wx.showToast({
+            //       title: JSON.stringify(lb),
+            //       icon: 'success',
+            //       duration: 2000
+            // })
       }
 })

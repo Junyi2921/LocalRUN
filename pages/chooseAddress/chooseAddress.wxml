@@ -7,12 +7,25 @@
             <view class='searchSpace'></view>
       </view>
       <view class='tab'>
-            <view class='tabItem' bindtap='getLocation'>我的位置</view>
-            <view class='tabItem' bindtap='getHistoryList'>历史记录</view>
-            <view class='tabItem' bindtap='chooseNativeMap'>地图选点</view>
+            <view class='tabItem' bindtap='getLocation'>
+                  <image class='tabItemImg' src='../../resources/imgs/myLocation.png'></image>
+                  我的位置
+            </view>
+            <view class='tabItem' bindtap='getHistoryList'>
+                  <image class='tabItemImg' src='../../resources/imgs/history.png'></image>
+                  历史记录
+            </view>
+            <view class='tabItem' bindtap='chooseNativeMap'>
+                  <image class='tabItemImg' src='../../resources/imgs/map.png'></image>
+                  地图选点
+            </view>
       </view>
       <scroll-view class="searchList" scroll-y='true' enable-back-to-top='true' scroll-top='{{scrollTop}}'>
-            <view class='searchItem' wx:for="{{searchList}}" wx:key="{{index}}" id="{{index}}" bindtap='chooseItem'>
+            <view wx:if="{{searchList.length == 0}}" class='emptyListView'>
+                  <image class='emptyIcon' src='../../resources/imgs/emptyIcon.png'></image>
+                  <view>暂无历史记录</view>
+            </view>
+            <view wx:if="{{searchList.length != 0}}" class='searchItem' wx:for="{{searchList}}" wx:key="{{index}}" id="{{index}}" bindtap='chooseItem'>
                   <view class='searchItemTitle'>
                         {{item.title}}
                   </view>
